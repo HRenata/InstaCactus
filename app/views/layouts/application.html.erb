@@ -3,13 +3,44 @@
   <head>
     <title>InstaCactus</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <!--Navigation Bar-->
+    <nav class="navbar navbar-light bg-light d-flex">
+      <div class="container">
+        <div class="logo">
+          <a class="navbar-brand" href="#">
+            <%= fa_stacked_icon "camera inverse", base: "circle"%>
+            InstaCactus
+          </a>
+        </div>
+        <div class="m-auto">
+          <form class="form-inline search-form">
+            <input class="form-control" type="search" placeholder="search" aria-label="Search">
+          </form>
+        </div>
+        <div class="user-section">
+          <a class="navbar-brand" href="#">
+            <i class="fa fa-user"></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!--Main content-->
+    <main class="container" style="height: 630px;">
+      <%= yield %>
+    </main>
+
+    <!--Footer-->
+    <footer class="container footer">
+      <nav class="navbar d-flex">
+        <p> © 2020 Renata Hauryliuk </p>
+      </nav>
+    </footer>
   </body>
 </html>
