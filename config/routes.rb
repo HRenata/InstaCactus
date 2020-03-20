@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   
   root to: 'home#index'
 
+  get 'users' => 'users#show_all'
   resources :users, only: [:show]
 end
