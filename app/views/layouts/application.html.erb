@@ -13,7 +13,7 @@
     <nav class="navbar navbar-light bg-light d-flex">
       <div class="container">
         <div class="logo">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="<%= root_path %>">
             <%= fa_stacked_icon "camera inverse", base: "circle"%>
             InstaCactus
           </a>
@@ -24,9 +24,21 @@
           </form>
         </div>
         <div class="user-section">
-          <a class="navbar-brand" href="#">
-            <i class="fa fa-user"></i>
-          </a>
+          <% if user_signed_in? %>
+          <!--
+            <a href="<%= user_path(current_user)%>">
+              <i class="fa fa-user"></i>
+            </a> 
+            -->
+            <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
+          <% else %>
+          <!--
+            <a href="<%= new_user_session_path%>">
+              <i class="fa fa-sign-in"></i>
+            </a>
+            -->
+            <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
+          <% end %>
         </div>
       </div>
     </nav>
