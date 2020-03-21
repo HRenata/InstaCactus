@@ -11,22 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :firstName %>
-    <%= form.text_field :firstName %>
+  <div class="form-group row">
+    <%= form.label :firstName, class: "col-sm-1 col-form-label" %>
+    <div class="col-sm-11">
+      <%= form.text_field :firstName, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :secondName %>
-    <%= form.text_field :secondName %>
+  <div class="form-group row">
+    <%= form.label :secondName, class: "col-sm-1 col-form-label" %>
+    <div class="col-sm-11">
+      <%= form.text_field :secondName, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+  <div class="form-group row">
+    <%= form.label :email, class: "col-sm-1 col-form-label" %>
+    <div class="col-sm-11">
+      <%= form.text_field :email, class: "form-control", type:"email" %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Update", class: "btn btn-outline-info" %>
   </div>
 <% end %>
