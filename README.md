@@ -1,4 +1,7 @@
 # README
+Веб-технологии
+ПО 3
+Гаврилюк Рената
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

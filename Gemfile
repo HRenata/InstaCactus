@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
+gem 'dotenv-rails', groups: [:development, :test]
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
 
 ruby '2.5.7'
 
