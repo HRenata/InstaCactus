@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_011515) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.integer "failed_attempts", default: 3, null: false
+    t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
