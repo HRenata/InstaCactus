@@ -1,2 +1,20 @@
 <h1>Home page</h1>
 <br><br>  <%= link_to 'Create new post', new_post_path%>
+
+<div >
+    <% @posts.each do |post| %>
+        <div >
+            <div class="avatar">
+                <img src="user_avatar.jpg">
+            </div>
+            <div >
+                <%= post.user.firstName%> <%= post.user.secondName%>
+            </div>
+        </div>
+        <%= image_tag post.image, class: 'main-image' %>
+        <div >
+            <%= post.description %>
+        </div>
+
+    <% end %>
+</div>
