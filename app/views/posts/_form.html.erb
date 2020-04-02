@@ -16,6 +16,14 @@
     <%= form.text_field :description %>
   </div>
 
+  <div class="field">
+      <%= form.file_field :image %>
+  </div>
+  <div class="field">
+    <%= form.text_field :user_id, value: current_user.id, class:'d-none'%>
+  </div>
+  <br>
+
   <div class="actions">
     <%= form.submit %>
   </div>
