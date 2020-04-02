@@ -11,7 +11,7 @@
     </h4>
     <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-outline-info"  %>
     <ul class>
-      <li><span>12</span> posts</li>
+      <li><span><%= @posts.count %></span> posts</li>
       <li><span>100</span> followers</li>
       <li><span>100</span> following</li>
     </ul>
@@ -19,3 +19,23 @@
 </div>
 
 <%= link_to 'Back', users_path, class: "btn btn-outline-info"  %>
+
+<div class="posts">
+    <% @posts.each do |post| %>
+        <section class="post">
+            <div class="user">
+                <div class="avatar">
+                    <img src="user_avatar.jpg">
+                </div>
+                <div class="username">
+                    <%= post.user.firstName%> <%= post.user.secondName%>
+                </div>
+            </div>
+            <%= image_tag post.image, class: 'main-image' %>
+            <div class="description">
+                <%= post.description %>
+            </div>
+        </section> 
+
+    <% end %>
+</div>
