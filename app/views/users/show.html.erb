@@ -32,7 +32,8 @@
                 </div>
                 <div class="username">
                     <%= post.user.firstName%> <%= post.user.secondName%>
-                </div>
+                </div>   
+                <td>   <%= link_to 'Destroy', post, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </div>
             <%= image_tag post.image, class: 'main-image' %>
             <div class="description">
