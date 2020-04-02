@@ -1,22 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<div class="media">
-  <div class="col-sm-2">
-    <img class="rounded-circle img-fluid" src="https://bipbap.ru/wp-content/uploads/2019/07/skvishi-32-800x800-640x640.jpg">
+<div class="user-profile">
+  <div class="profile row">
+    <div class="col-md-4 avatar">
+      <div class="wrapper">
+        <img class="rounded-circle img-fluid" src="https://bipbap.ru/wp-content/uploads/2019/07/skvishi-32-800x800-640x640.jpg">
+      </div>
+    </div>
+    <div class="col-md-8 basic-info">
+      <h4 class="username">
+        <%= @user.firstName %>
+        <%= @user.secondName %>
+      </h4>
+      <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-outline-info"  %>
+      <ul>
+        <li><span><%= @posts.count %></span> posts</li>
+        <li><span>100</span> followers</li>
+        <li><span>100</span> following</li>
+      </div>
+    </div>
   </div>
-  <div class="media-body">
-    <h4 class="media-heading">
-      <%= @user.firstName %>
-      <%= @user.secondName %>
-    </h4>
-    <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-outline-info"  %>
-    <ul class>
-      <li><span><%= @posts.count %></span> posts</li>
-      <li><span>100</span> followers</li>
-      <li><span>100</span> following</li>
-    </ul>
-  </div>
-</div>
 
 <%= link_to 'Back', users_path, class: "btn btn-outline-info"  %>
 
@@ -38,4 +41,5 @@
         </section> 
 
     <% end %>
+</div>
 </div>
