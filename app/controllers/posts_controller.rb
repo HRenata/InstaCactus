@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :check_post, only: [:destroy]
   # GET /posts
   # GET /posts.json
   def index
@@ -66,6 +67,13 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
+    def check_post
+      @post=Post.find(params[:id])
+      if current_user != @post.user
+        flash[:notice] = "No permissions"
+      end
+    end
+    
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:description, :image, :user_id)
