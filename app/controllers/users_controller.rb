@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @posts = current_user.posts.order(created_at: :desc)
+    @user  = User.find(params[:id])
+    @posts = @user.posts.order(created_at: :desc)
   end
 
   # GET /users/new
