@@ -2,7 +2,8 @@
 <br><br>  <%= link_to 'Create new post', new_post_path%>
 
 <div class="posts">
-    <% @posts.each do |post| %>
+<% current_user.following.each do |followers| %>
+    <% followers.posts.each do |post| %>
         <section class="post">
             <div class="user">
                 <div class="username">
@@ -15,6 +16,6 @@
                 <%= post.description %>
             </div>
         </section> 
-
+        <% end %>
     <% end %>
 </div>
