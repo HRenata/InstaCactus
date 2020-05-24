@@ -21,12 +21,17 @@
                 <hr />
                 <h5 class="subtitle is-3">Leave a comment</h5>
                 <hr>
+                
                 <%= form_with(model: [@user,@post,@post.comments.build ], local: true) do |form| %>
-                <p>
-                <%= form.label :text %><br>
-                <%= form.text_field :text %>
-                </p>
-                <%= form.submit %>
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <%= form.text_field :text, class: "form-control" %>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <%= form.submit "Commet", class: "btn btn-outline-info" %>
+                </div>
                 <%end%>
         </div>
 <% end %>
