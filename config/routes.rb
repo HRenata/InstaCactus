@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   end
   resources :followings, only: %i[create destroy]
   get 'home/index'
-  
+  get 'users' => 'users#index', as: 'user_root'
   root to: 'home#index'
 end

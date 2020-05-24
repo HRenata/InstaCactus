@@ -8,9 +8,23 @@
                 </div>   
                 <td>    <%= link_to 'Destroy', @post, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </div>
-  <%= image_tag url_for(@post.image) , class: 'main-image' %>
+    <%= image_tag url_for(@post.image) , class: 'main-image' %>
             <div class="description">
                 <%= @post.description %>
             </div>
+
+        <div class="container">
+                <hr />
+                <h5 class="subtitle is-3">Leave a comment</h5>
+                <hr>
+                <%= form_with(model: [@user,@post,@post.comments.build ], local: true) do |form| %>
+                <p>
+                <%= form.label :text %><br>
+                <%= form.text_field :text %>
+                </p>
+                <%= form.submit %>
+                <%end%>
+        </div>
+
         </section> 
 <p>
