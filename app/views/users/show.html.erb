@@ -30,7 +30,9 @@
                 <div class="username">
                     <%= post.user.firstName%> <%= post.user.secondName%>
                 </div>   
+                <% if user_signed_in? && (post.user.id == current_user.id) %>
                 <td>   <%= link_to 'Destroy', post, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
             </div>
             <%= image_tag post.image, class: 'main-image' %>
             <div class="description">

@@ -1,13 +1,18 @@
-<p id="notice"><%= notice %></p>
-
+<div class="posts">
+<section class="post">
+            <div class="user">
+                <div class="username">
+                    <%= @post.user.firstName%> <%= @post.user.secondName%>
+                </div>   
+                <% if user_signed_in? && (@post.user.id == current_user.id) %>
+                <td>    <%= link_to 'Destroy', @post, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <%end%>
+            </div>
+    <%= image_tag url_for(@post.image) , class: 'main-image' %>
+            <div class="description">
+                <%= @post.description %>
+            </div>
+        </div>
+        </section> 
+        </div>
 <p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
-
-<p>
-  <%= image_tag url_for(@post.image) %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
