@@ -7,13 +7,16 @@
                 <div class="username">
                     <%= @post.user.firstName%> <%= @post.user.secondName%>
                 </div>   
+                <% if user_signed_in? && (@post.user.id == current_user.id) %>
                 <td>    <%= link_to 'Destroy', @post, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
             </div>
     <%= image_tag url_for(@post.image) , class: 'main-image' %>
             <div class="description">
                 <%= @post.description %>
             </div>
 
+<% if user_signed_in? && (@post.user.id == current_user.id) %>
         <div class="container">
                 <hr />
                 <h5 class="subtitle is-3">Leave a comment</h5>
@@ -26,6 +29,7 @@
                 <%= form.submit %>
                 <%end%>
         </div>
+<% end %>
 
         <%@comments.each do |comment|%>
             <p><strong><%=comment.user.firstName%></strong></p>   
