@@ -26,5 +26,10 @@
                 <%end%>
         </div>
 
+        <%@comments.each do |comment|%>
+            <p><strong><%=comment.user.firstName%></strong></p>   
+            <p><%=comment.text%></p>
+        <% end %>
+
         </section> 
 <p>
