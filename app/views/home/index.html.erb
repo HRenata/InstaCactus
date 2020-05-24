@@ -1,7 +1,7 @@
 <h1>Home page</h1>
-<br><br>  <%= link_to 'Create new post', new_post_path%>
 
 <% if user_signed_in? %>
+<br><br>  <%= link_to 'Create new post', new_post_path%>
 <div class="posts">
 <% current_user.following.each do |followers| %>
     <% followers.posts.each do |post| %>
