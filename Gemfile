@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
+gem 'dotenv-rails', groups: [:development, :test]
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'dotenv-rails', groups: [:development, :test]
 
 ruby '2.5.7'
 
@@ -67,3 +67,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem "font-awesome-rails"
 gem 'devise'
+
+gem 'sendgrid-ruby'
+
+gem "aws-sdk-s3", require: false

@@ -1,0 +1,8 @@
+<% form_for :comments, @post.comment, :url => { :action => "create" } do |form| %>
+
+  <%= form.input :comment %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

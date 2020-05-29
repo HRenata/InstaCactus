@@ -1,1 +1,24 @@
-<h1>Home page</h1>
+<div class="posts">
+<% if user_signed_in? %>
+<br><br>  <%= link_to 'Create new post', new_post_path , class: "btn btn-outline-info" %>
+<% current_user.following.each do |followers| %>
+    <% followers.posts.each do |post| %>
+        <section class="post">
+            <div class="user">
+                <div class="username">
+                    <%= post.user.firstName%> <%= post.user.secondName%>
+                </div>   
+            <%= link_to 'Show', post, class: "btn btn-outline-info" %>
+                <% if user_signed_in? && (post.user.id == current_user.id) %>
+                <td>    <%= link_to 'Destroy', post, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
+            </div>
+            <%= image_tag post.image, class: 'main-image' %>
+            <div class="description">
+                <%= post.description %>
+            </div>
+        </section> 
+        <% end %>
+    <% end %>
+</div>
+<% end %>

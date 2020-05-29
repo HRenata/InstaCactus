@@ -1,1 +1,55 @@
-<h1><%= @user.email %></h1>
+<p id="notice"><%= notice %></p>
+
+<div class="user-profile">
+  <div class="profile row">
+    <div class="col-md-4 avatar">
+      <div class="wrapper">
+        <img class="rounded-circle img-fluid" src="https://bipbap.ru/wp-content/uploads/2019/07/skvishi-32-800x800-640x640.jpg">
+      </div>
+    </div>
+    <div class="col-md-8 basic-info">
+      <h4 class="username">
+        <%= @user.firstName %>
+        <%= @user.secondName %>
+      </h4>
+      <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-outline-info"  %>
+      <% if user_signed_in? && (@user.id != current_user.id) %>
+
+      <% if current_user.following?(@user) %>
+        <%= link_to 'Unfollow', following_path(user_id: @user.id), method: :delete, :class => "btn btn-outline-info" %>
+      <% else %>
+        <%= link_to 'Follow', followings_path(user_id: @user.id), method: :post, :class => "btn btn-outline-info" %>
+      <% end %>
+
+      <% end %>
+      <ul>
+        <li><span><%= @posts.count %></span> posts</li>
+        <li><span> <%= @user.followers.count%> </span> followers</li>
+        <li><span> <%= @user.following.count%> </span> following</li>
+      </div>
+    </div>
+  </div>
+
+<%= link_to 'Back', users_path, class: "btn btn-outline-info"  %>
+
+<div class="posts">
+    <% @posts.each do |post| %>
+        <section class="post">
+            <div class="user">
+                <div class="username">
+                    <%= post.user.firstName%> <%= post.user.secondName%>
+                </div>
+            <%= link_to 'Show', post, class: "btn btn-outline-info" %>
+                <% if user_signed_in? && (post.user.id == current_user.id) %>
+                <td>   <%= link_to 'Destroy', post, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
+            </div>
+            <%= image_tag post.image, class: 'main-image' %>
+            <div class="description">
+                <%= post.description %>
+            </div>
+        </section> 
+
+    <% end %>
+</div>
+</div>

@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="posts">
+<section class="post">
+            <div class="user">
+                <div class="username">
+                    <%= @post.user.firstName%> <%= @post.user.secondName%>
+                </div>   
+                <% if user_signed_in? && (@post.user.id == current_user.id) %>
+                <td>    <%= link_to 'Destroy', @post, class: "btn btn-outline-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
+            </div>
+    <%= image_tag url_for(@post.image) , class: 'main-image' %>
+            <div class="description">
+                <%= @post.description %>
+            </div>
+
+<% if user_signed_in? && (@post.user.id == current_user.id) %>
+        <div class="container">
+                <hr />
+                <h5 class="subtitle is-3">Leave a comment</h5>
+                <hr>
+                
+                <%= form_with(model: [@user,@post,@post.comments.build ], local: true) do |form| %>
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <%= form.text_field :text, class: "form-control" %>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <%= form.submit "Commet", class: "btn btn-outline-info" %>
+                </div>
+                <%end%>
+        </div>
+<% end %>
+
+        <%@comments.each do |comment|%>
+            <p><strong><%=comment.user.firstName%></strong></p>   
+            <p><%=comment.text%></p>
+        <% end %>
+
+        </section> 
+        </div>
+<p>
